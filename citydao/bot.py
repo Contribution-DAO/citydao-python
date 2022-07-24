@@ -24,7 +24,6 @@ class Bot(object):
     def init_google(self, apikey: str) -> None:
         self.calendar = CityDAOCalendar(apikey)
 
-
     def get_proposals_msg(self) -> str:
         return self.snapshot.get_daily_summary()
 
@@ -83,5 +82,19 @@ class TelegramBot(Bot):
             CommandHandler(
                 "tweets",
                 self.get_tweets_msg
+            )
+        )
+
+        self.updater.dispatcher.add_handler(
+            CommandHandler(
+                "calendar",
+                self.get_calendar_msg
+            )
+        )
+
+        self.updater.dispatcher.add_handler(
+            CommandHandler(
+                "treasury",
+                self.get_treasury_msg
             )
         )
