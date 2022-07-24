@@ -17,6 +17,9 @@ class Tweet(object):
     def __post_init__(self) -> None:
         self.url = f"https://twitter.com/citydao/status/{self.id}"
 
+    def __repr__(self) -> str:
+        return f"Tweet({self.url})"
+
 
 class CityDAOTwitter(object):
 
@@ -94,7 +97,7 @@ class CityDAOTwitter(object):
         template += "\n🟩 Have a great day Citizen\\! 🟩"
         return template
 
-    def get_daily_summary(self, n_tweets: int = 5) -> str:
+    def get_daily_summary(self, n_tweets: int = 3) -> str:
         latest_tweets = self.fetch_recent_tweets()
         new_tweets, other_tweets = self.filter_today_tweets(latest_tweets, return_others=True)
         other_tweets = other_tweets[:max(0, n_tweets - len(new_tweets))]

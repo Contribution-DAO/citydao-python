@@ -14,6 +14,9 @@ class Token(object):
         self.contract = Web3Address(self.address).get_contract(self.provider, abi_path)
         self.ticker = self.get_ticker()
 
+    def __repr__(self) -> str:
+        return f"ERC20Token({self.address})"
+
     def get_ticker(self) -> str:
         return self.contract.functions.symbol().call()
 

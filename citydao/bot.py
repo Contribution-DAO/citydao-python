@@ -5,6 +5,7 @@ import telegram
 from telegram.ext import CommandHandler, Updater
 from telegram.parsemode import ParseMode
 
+from citydao.calendar import CityDAOCalendar
 from citydao.snapshot import SnapshotAPI
 from citydao.treasury import CityDAOTreasury
 from citydao.tweets import CityDAOTwitter
@@ -20,6 +21,10 @@ class Bot(object):
     def init_twitter(self, apikey: str, api_secret: str) -> None:
         self.citydao_twitter = CityDAOTwitter(apikey, api_secret)
 
+    def init_google(self, apikey: str) -> None:
+        self.calendar = CityDAOCalendar(apikey)
+
+
     def get_proposals_msg(self) -> str:
         return self.snapshot.get_daily_summary()
 
@@ -28,6 +33,9 @@ class Bot(object):
 
     def get_treasury_msg(self) -> str:
         return self.treasury.get_daily_summary()
+
+    def get_calendar_msg(self) -> str:
+        return self.calendar.get_daily_summary()
 
     def send_message(self, msg: str) -> None:
         raise NotImplementedError()

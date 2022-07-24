@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 
 import pytest
 from dotenv import load_dotenv
+from citydao.calendar import CityDAOCalendar
 
 from citydao.treasury import CityDAOTreasury
 from citydao.tweets import CityDAOTwitter
@@ -32,8 +33,13 @@ def test_balance():
     treasury = CityDAOTreasury()
     balance = treasury.get_balance()
 
+
+def test_calendar():
+    calendar = CityDAOCalendar(os.getenv("GOOGLE_APIKEY"))
+    events = calendar.get_today_events()
+
     assert True
 
 
 if __name__ == "__main__":
-    test_balance()
+    test_calendar()

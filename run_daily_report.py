@@ -16,13 +16,20 @@ def main() -> None:
         apikey=os.getenv("TWITTER_APIKEY"),
         api_secret=os.getenv("TWITTER_API_SECRET"),
     )
-    proposal_msg = telegram_bot.get_proposals_msg()
+    telegram_bot.init_google(apikey=os.getenv("GOOGLE_APIKEY"))
+
     tweets_msg = telegram_bot.get_tweets_msg()
+    proposal_msg = telegram_bot.get_proposals_msg()
     treasury_msg = telegram_bot.get_treasury_msg()
+    calendar_msg = telegram_bot.get_calendar_msg()
 
     # send telegram message
     telegram_bot.send_message(
         msg=tweets_msg
+    )
+
+    telegram_bot.send_message(
+        msg=calendar_msg
     )
 
     telegram_bot.send_message(
