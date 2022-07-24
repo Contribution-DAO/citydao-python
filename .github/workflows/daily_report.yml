@@ -26,5 +26,5 @@ jobs:
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TWITTER_APIKEY: ${{ secrets.TWEEPY_APIKEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWEEPY_API_SECRET }}
+        TWITTER_APIKEY: ${{ secrets.TWITTER_APIKEY }}
+        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
