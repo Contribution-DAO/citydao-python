@@ -28,7 +28,7 @@ class CityDAOCalendar(object):
         self.url = f"https://calendar.google.com/calendar/u/0/embed?src=c_4r6hnu78hifcmgimcgm0huhc6k@group.calendar.google.com&ctz={self.timezone}"
 
     def get_today_events(self) -> Any:
-        today = datetime.now() + timedelta(days=1)
+        today = datetime.now()
         start_time = today.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=pytz.UTC)
         end_time = start_time + timedelta(days=1)
         events = self.service.events().list(
