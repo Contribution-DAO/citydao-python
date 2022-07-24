@@ -33,3 +33,6 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+        env:
+          TWEEPY_APIKEY: ${{ secrets.TWEEPY_APIKEY }}
+          TWEEPY_API_SECRET: ${{ secrets.TWEEPY_API_SECRET }}
