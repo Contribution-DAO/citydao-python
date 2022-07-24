@@ -21,7 +21,7 @@ class Tweet(object):
 class CityDAOTwitter(object):
 
     def __init__(self, apikey: str, api_secret: str) -> None:
-        auth = tw.OAuthHandler(apikey, api_secret)
+        auth = tw.OAuth1UserHandler(apikey, api_secret)
         self.api = tw.API(auth, wait_on_rate_limit=True)
         self.account = "CityDAO"
 
@@ -68,12 +68,12 @@ class CityDAOTwitter(object):
         return today_tweets
 
     def format_tweets(self, new_tweets: List[Tweet], other_tweets: List[Tweet]) -> str:
-        template = "🌆 Here's latest CityDAO tweets \([@CityDAO](https://twitter.com/citydao)\)\n\n"
+        template = "🌆 Here's latest CityDAO tweets \\([@CityDAO](https://twitter.com/citydao)\\)\n\n"
 
         if len(new_tweets) == 0:
-            template += f"🥱 There's no new tweets from [@CityDAO](https://twitter.com/citydao)\!\n\n"
+            template += f"🥱 There's no new tweets from [@CityDAO](https://twitter.com/citydao)\\!\n\n"
         else:
-            template += f"🎏 There's {len(new_tweets)} Tweets\!\n\n"
+            template += f"🎏 There's {len(new_tweets)} Tweets\\!\n\n"
 
         for i, tweet in enumerate(new_tweets):
             template += f"👉 `{tweet.text[:100]}...`\n"
@@ -82,7 +82,7 @@ class CityDAOTwitter(object):
             template += f"   ⏰ Tweeted on: {tweet.created_at.strftime('%d %b %Y %H:%M:%S UTC')}\n\n"
 
         if len(other_tweets) > 0:
-            template += f"Checkout other tweets from [@CityDAO](https://twitter.com/citydao)\!\n\n"
+            template += f"Checkout other tweets from [@CityDAO](https://twitter.com/citydao)\\!\n\n"
 
             for i, tweet in enumerate(other_tweets):
                 template += f"👉 `{tweet.text[:100]}...`\n"
@@ -91,7 +91,7 @@ class CityDAOTwitter(object):
                 template += f"   ⏰ Tweeted on: {tweet.created_at.strftime('%d %b %Y %H:%M:%S UTC')}\n\n"
 
 
-        template += "\n🟩 Have a great day Citizen\! 🟩"
+        template += "\n🟩 Have a great day Citizen\\! 🟩"
         return template
 
     def get_daily_summary(self, n_tweets: int = 5) -> str:

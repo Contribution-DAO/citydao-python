@@ -190,7 +190,7 @@ class SnapshotAPI(object):
         return proposals
 
     def format_active_proposals(self, proposals: List[SnapshotProposal]) -> str:
-        template = f"🗳 [CityDAO Snapshot]({self.url}) have {len(proposals)} active proposal\(s\)\!\n\n"
+        template = f"🗳 [CityDAO Snapshot]({self.url}) have {len(proposals)} active proposal\(s\)\\!\n\n"
 
         for proposal in proposals:
             template += f"👉 [`{proposal.title}`]({proposal.url})\n"
@@ -209,10 +209,10 @@ class SnapshotAPI(object):
             minutes_left, _ = divmod(seconds_left, 60)
             hours_left, minutes_left = divmod(minutes_left, 60)
             template += f"   ⏰ Deadline: {deadline.strftime('%d %b %Y %H:%M:%S UTC')}\n"
-            template += f"           \({int(hours_left)} hours {int(minutes_left)} minutes left\!\)\n"
+            template += f"           \({int(hours_left)} hours {int(minutes_left)} minutes left\\!\)\n"
             template += f"   🟢 Cast your vote [here]({proposal.url})\n\n"
 
-        template += f"📝 Be sure to vote if you're a Citizen\!"
+        template += f"📝 Be sure to vote if you're a Citizen\\!"
         return template
 
     def get_daily_summary(self) -> str:
