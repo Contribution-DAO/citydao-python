@@ -34,5 +34,5 @@ jobs:
         run: |
           pytest
         env:
-          TWEEPY_APIKEY: ${{ secrets.TWEEPY_APIKEY }}
-          TWEEPY_API_SECRET: ${{ secrets.TWEEPY_API_SECRET }}
+          TWITTER_APIKEY: ${{ secrets.TWEEPY_APIKEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWEEPY_API_SECRET }}
