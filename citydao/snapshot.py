@@ -192,6 +192,9 @@ class SnapshotAPI(object):
     def format_active_proposals(self, proposals: List[SnapshotProposal]) -> str:
         template = f"🗳 [CityDAO Snapshot]({self.url}) have {len(proposals)} active proposal\(s\)\\!\n\n"
 
+        if len(proposals) == 0:
+            return template.strip()
+
         for proposal in proposals:
             template += f"👉 [`{proposal.title}`]({proposal.url})\n"
 
