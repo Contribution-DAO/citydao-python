@@ -60,7 +60,7 @@ class CityDAOCalendar(object):
 
         for event in events:
             template += f"👉 `{event.summary}`\n"
-            template += f"  🕰 Time: {event.start_time.strftime('%H:%M:%S')} \\- {event.end_time.strftime('%H:%M:%S')}\n"
+            template += f"  🕰 Time: {event.start_time.strftime('%H:%M')} \\- {event.end_time.strftime('%H:%M')} UTC\n"
             template += f"  🧑‍💻 Creator: `{event.creator}`\n"
             if event.meeting_url is not None:
                 template += f"  🔗 Join meeting [here]({event.meeting_url})\n\n"
