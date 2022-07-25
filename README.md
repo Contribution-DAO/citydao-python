@@ -1,4 +1,4 @@
-# CityDAO Utility Bot + Python package
+<h1> <img src="https://assets-global.website-files.com/6272c661b8279db416277c32/6272c661b8279de997277cb2_CityDao_Green-logo.svg" style="width: 40px"> CityDAO Utility Bot + Python package </h1>
 A utility python package to fetch **everything** about CityDAO's info. 
 
 ## 🧰 Dependencies
