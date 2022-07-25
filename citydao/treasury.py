@@ -54,7 +54,7 @@ class CityDAOTreasury(object):
         return balance
 
     def format_balance(self, balance: Dict[str, float]) -> str:
-        template = f"🏦 [CityDAO Tresury](https://gnosis-safe.io/app/eth:0x60e7343205C9C88788a22C40030d35f9370d302D/balances) Balance\n\n"
+        template = f"🏦 [CityDAO Tresury](https://gnosis-safe.io/app/eth:0x60e7343205C9C88788a22C40030d35f9370d302D/balances) Balance\n"
 
         for token, token_balance in balance.items():
             template += f"   \- {token_balance:,.4f} `{token}`\n".replace(".", "\\.")

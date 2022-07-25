@@ -29,11 +29,11 @@ def main() -> None:
     )
 
     telegram_bot.send_message(
-        msg=calendar_msg
+        msg=treasury_msg
     )
 
     telegram_bot.send_message(
-        msg=treasury_msg
+        msg=calendar_msg
     )
 
     telegram_bot.send_message(

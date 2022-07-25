@@ -82,17 +82,17 @@ class CityDAOTwitter(object):
         for i, tweet in enumerate(new_tweets):
             template += f"👉 `{tweet.text[:100]}...`\n"
             template += f"   [Read full tweet here]({tweet.url})\n"
-            template += f"   💚 {tweet.fav_count:03d}\t🔁 {tweet.rtw_count:03d}\n"
+            template += f"   🔁 {tweet.rtw_count:03d}\t💚 {tweet.fav_count:03d}\n"
             template += f"   ⏰ Tweeted on: {tweet.created_at.strftime('%d %b %Y %H:%M:%S UTC')}\n\n"
 
         if len(other_tweets) > 0:
-            template += f"\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\n\n"
+            template += f"———————————————————————————————\n\n"
             template += f" 🗞 Checkout other tweets from [@CityDAO](https://twitter.com/citydao)\\!\n\n"
 
             for i, tweet in enumerate(other_tweets):
                 template += f"👉 `{tweet.text[:100]}...`\n"
                 template += f"   [Read full tweet here]({tweet.url})\n"
-                template += f"   💚 {tweet.fav_count:03d}\t🔁 {tweet.rtw_count:03d}\n"
+                template += f"   🔁 {tweet.rtw_count:03d}\t💚 {tweet.fav_count:03d}\n"
                 template += f"   ⏰ Tweeted on: {tweet.created_at.strftime('%d %b %Y %H:%M:%S UTC')}\n\n"
                 
         return template.strip()
