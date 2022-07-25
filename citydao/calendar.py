@@ -54,9 +54,9 @@ class CityDAOCalendar(object):
 
     def format_events(self, events: List[CalendarEvent]) -> str:
         if len(events) == 0:
-            return f"🗓 There's no CityDAO Event today!\n\nEnjoy your holiday🍻"
+            return f"🗓 There's no CityDAO Event today\\!\n\nEnjoy your holiday🍻"
 
-        template = f"🗓 There're {len(events)} events on [CityDAO Calendar]() today\\!\n\n"
+        template = f"🗓 There're {len(events)} events on [CityDAO Calendar](https://calendar.google.com/calendar/embed?src=c_4r6hnu78hifcmgimcgm0huhc6k%40group.calendar.google.com&ctz=UTC) today\\!\n\n"
 
         for event in events:
             template += f"👉 `{event.summary}`\n"
