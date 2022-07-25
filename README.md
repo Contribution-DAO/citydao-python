@@ -106,4 +106,4 @@ for proposal in proposals:
 Feels free to fork this repository and create a pull request!
 
 ## 🧙‍♂️ Author
-Chompakorn Chaksangchaichot
+chompk.eth | Contribution DAO#9502
