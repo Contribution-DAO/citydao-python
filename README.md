@@ -5,6 +5,8 @@ A utility python package to fetch **everything** about CityDAO's info.
 
 - Python >= 3.10
 
+## 🫕 Installation
+
 <details><summary><b>From source</b></summary>
 
 1. _Activate virtual environment (Optional)_
