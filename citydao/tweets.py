@@ -86,7 +86,7 @@ class CityDAOTwitter(object):
             template += f"   ⏰ Tweeted on: {tweet.created_at.strftime('%d %b %Y %H:%M:%S UTC')}\n\n"
 
         if len(other_tweets) > 0:
-            template += f"———————————————————————————————\n\n"
+            template += f"—————————————————————————\n\n"
             template += f" 🗞 Checkout other tweets from [@CityDAO](https://twitter.com/citydao)\\!\n\n"
 
             for i, tweet in enumerate(other_tweets):

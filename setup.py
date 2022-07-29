@@ -13,7 +13,7 @@ with open("README.md", "r") as fp:
 
 
 setuptools.setup(
-    name="cpk_hubert",
+    name="citydao",
     version="0.0.1",
     author="Chompakorn Chaksangchaichot",
     author_email="chompakorn.c@contributiondao.com",

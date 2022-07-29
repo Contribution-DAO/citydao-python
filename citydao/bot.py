@@ -7,6 +7,7 @@ from telegram.parsemode import ParseMode
 
 from citydao.calendar import CityDAOCalendar
 from citydao.snapshot import SnapshotAPI
+from citydao.spotify import CityDAOSpotify
 from citydao.treasury import CityDAOTreasury
 from citydao.tweets import CityDAOTwitter
 
@@ -17,6 +18,9 @@ class Bot(object):
         self.snapshot = SnapshotAPI()
         self.citydao_twitter = None
         self.treasury = CityDAOTreasury()
+
+    def init_spotify(self, client_id: str, client_credentials) -> None:
+        self.citydao_spotify = CityDAOSpotify(client_id, client_credentials)
 
     def init_twitter(self, apikey: str, api_secret: str) -> None:
         self.citydao_twitter = CityDAOTwitter(apikey, api_secret)
@@ -35,6 +39,9 @@ class Bot(object):
 
     def get_calendar_msg(self) -> str:
         return self.calendar.get_daily_summary()
+
+    def get_spotify_msg(self) -> str:
+        return self.citydao_spotify.get_daily_summary()
 
     def send_message(self, msg: str) -> None:
         raise NotImplementedError()
@@ -98,5 +105,12 @@ class TelegramBot(Bot):
             CommandHandler(
                 "treasury",
                 self.get_treasury_msg
+            )
+        )
+
+        self.updater.dispatcher.add_handler(
+            CommandHandler(
+                "spotify",
+                self.get_spotify_msg
             )
         )
