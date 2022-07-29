@@ -5,8 +5,6 @@ from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
 
-sys.path.append("/home/chompk/Works/cdao/citydao")
-
 from citydao.calendar import CityDAOCalendar
 from citydao.spotify import CityDAOSpotify
 from citydao.treasury import CityDAOTreasury
