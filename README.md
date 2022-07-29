@@ -1,21 +1,23 @@
 <h1> <img src="https://assets-global.website-files.com/6272c661b8279db416277c32/6272c661b8279de997277cb2_CityDao_Green-logo.svg" style="width: 40px"> CityDAO Utility Bot + Python package </h1>
-A utility python package to fetch **everything** about CityDAO's info. 
+A utility python package to fetch **everything** about CityDAO's info.
 
 ## 🧰 Dependencies
+
 - Python >= 3.10
 
 <details><summary><b>From source</b></summary>
 
 1. _Activate virtual environment (Optional)_
-    ```bash
-    python3 -m venv citydao.venv
-    source citydao.venv/bin/activate
-    ```
 
+   ```bash
+   python3 -m venv citydao.venv
+   source citydao.venv/bin/activate
+   ```
 2. _Install via `setup.py`_
-    ```bash
-    python setup.py install
-    ```
+
+   ```bash
+   python setup.py install
+   ```
 
 </details>
 
@@ -26,13 +28,17 @@ A utility python package to fetch **everything** about CityDAO's info.
 </details>
 
 ## 💻 Usage
+
 There are 4 main usage for this repository
 
 ### Prepare `.env` files
+
 Prepare `.env` files according to what was shown in [`.env.example`](./.env.example).
+
 - Get google API key [here](https://support.google.com/googleapi/answer/6158862?hl=en)
 - Get twitter API key/secret [here](https://developer.twitter.com/en/portal/register/welcome)
 - Get telegram API key for bot [here](https://core.telegram.org/bots)
+- Get Spotify Client ID and credentials [here](https://developer.spotify.com/dashboard/login)
 
 <details><summary><b>🤖 Run a telegram bot</b></summary>
 
@@ -64,6 +70,18 @@ google_apikey = "your_google_api_key"
 calendar = CityDAOCalendar(google_apikey=google_apikey)
 
 today_events = calendar.get_today_events()
+```
+
+</details>
+
+<details><summary><b>📻 Get CityDAO's Podcast Episodes</b></summary>
+
+```python
+from citydao.spotify import CityDAOSpotify
+
+spotify_client_id, spotify_client_credentials = "your_spotify_client_id", "your_spotify_credentials"
+citydao_spotify = CityDAOSpotify(spotify_client_id, spotify_client_credentials)
+episodes = citydao_spotify.get_latest_episodes()
 ```
 
 </details>
@@ -103,7 +121,9 @@ for proposal in proposals:
 </details>
 
 ## 🔬 Contributing
+
 Feels free to fork this repository and create a pull request!
 
 ## 🧙‍♂️ Author
+
 chompk.eth | Contribution DAO#9502
