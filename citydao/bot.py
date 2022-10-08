@@ -63,7 +63,7 @@ class TelegramBot(Bot):
         self.chat_id = chat_id
 
     def send_message(self, msg: str, parse_mode: ParseMode = ParseMode.MARKDOWN_V2) -> None:
-        if len(msg) == 0:
+        if msg is None or len(msg) == 0:
             return
         self.bot.send_message(
             chat_id=self.chat_id,

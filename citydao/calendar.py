@@ -44,7 +44,7 @@ class CityDAOCalendar(object):
             CalendarEvent(
                 url=event["htmlLink"],
                 summary=event["summary"],
-                creator=event["creator"]["email"],
+                creator=event["creator"]["email"].split("@")[0],
                 start_time=datetime.strptime(event["start"]["dateTime"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=pytz.timezone(self.timezone)),
                 end_time=datetime.strptime(event["end"]["dateTime"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=pytz.timezone(self.timezone)),
                 meeting_url=event.get("hangoutLink", None)
@@ -52,9 +52,9 @@ class CityDAOCalendar(object):
             for event in events["items"]
         ]
 
-    def format_events(self, events: List[CalendarEvent]) -> str:
+    def format_events(self, events: List[CalendarEvent]) -> Optional[str]:
         if len(events) == 0:
-            return f"🗓 There's no CityDAO Event today\\!\n\nEnjoy your holiday🍻"
+            return None
 
         template = f"🗓 There're {len(events)} events on [CityDAO Calendar](https://calendar.google.com/calendar/embed?src=c_4r6hnu78hifcmgimcgm0huhc6k%40group.calendar.google.com&ctz=UTC) today\\!\n\n"
 

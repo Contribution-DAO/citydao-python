@@ -21,9 +21,12 @@ jobs:
         python -m pip install -U pip
         pip install -r requirements.txt
         python setup.py install
-    - name: Run daily proposal update
-      run: |
-        python run_daily_report.py
+    - name: Run daily proposal update with retry
+      uses: nick-fields/retry@v2.8.1
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        command: python run_daily_report.py
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

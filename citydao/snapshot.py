@@ -189,11 +189,11 @@ class SnapshotAPI(object):
         ]
         return proposals
 
-    def format_active_proposals(self, proposals: List[SnapshotProposal]) -> str:
+    def format_active_proposals(self, proposals: List[SnapshotProposal]) -> Optional[str]:
         template = f"🗳 [CityDAO Snapshot]({self.url}) have {len(proposals)} active proposal\(s\)\\!\n\n"
 
         if len(proposals) == 0:
-            return template.strip()
+            return None
 
         for proposal in proposals:
             template += f"👉 [`{proposal.title}`]({proposal.url})\n"
@@ -208,11 +208,12 @@ class SnapshotAPI(object):
             template += f"   🧿 Quorum: {sum(proposal.scores.values())}  / {proposal.quorum}\n"
             deadline = datetime.utcfromtimestamp(proposal.end)
             time_delta = (deadline - datetime.today())
+            days_left = time_delta.days
             seconds_left = time_delta.seconds
             minutes_left, _ = divmod(seconds_left, 60)
             hours_left, minutes_left = divmod(minutes_left, 60)
             template += f"   ⏰ Deadline: {deadline.strftime('%d %b %Y %H:%M:%S UTC')}\n"
-            template += f"           \({int(hours_left)} hours {int(minutes_left)} minutes left\\!\)\n"
+            template += f"           \({int(days_left)} days {int(hours_left)} hours {int(minutes_left)} minutes left\\!\)\n"
             template += f"   🟢 Cast your vote [here]({proposal.url})\n\n"
 
         template += f"📝 Be sure to vote if you're a Citizen\\!"
