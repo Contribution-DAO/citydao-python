@@ -70,14 +70,14 @@ class CityDAOTwitter(object):
         
         return today_tweets
 
-    def format_tweets(self, new_tweets: List[Tweet], other_tweets: List[Tweet]) -> str:
+    def format_tweets(self, new_tweets: List[Tweet], other_tweets: List[Tweet]) -> Optional[str]:
         template = "🌆 Here's latest CityDAO tweets \\([@CityDAO](https://twitter.com/citydao)\\)\n\n"
 
         if len(new_tweets) == 0:
-            template += f"🥱 There's no new tweets from [@CityDAO](https://twitter.com/citydao)\\!\n\n"
-            return template.strip()
+            return None
         else:
-            template += f"🎏 There's {len(new_tweets)} Tweets\\!\n\n"
+            aux_verb = "'s" if len(new_tweets) == 1 else "'re"
+            template += f"🎏 There{aux_verb} {len(new_tweets)} Tweets\\!\n\n"
 
         for i, tweet in enumerate(new_tweets):
             template += f"👉 `{tweet.text[:100]}...`\n"

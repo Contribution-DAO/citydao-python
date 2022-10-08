@@ -106,8 +106,7 @@ class CityDAOSpotify(object):
         template = f"📟 Here's latest CityDAO Podcast on [Spotify](https://open.spotify.com/show/4DqYWZyAMxUAL5o22caPSd)\\!\n\n"
 
         if len(new_episodes) == 0:
-            template += f"🥱 There's no new episode from CityDAO Podcast\\. Stay Tuned\\!\n\n"
-            return template.strip()
+            return None
         else:
             template += f"🍻 There's {len(new_episodes)} new podcast episodes\\!\n\n"
 
